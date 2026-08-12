@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
+  .map((tag) => ({ tag, count: posts.filter((post) => post.data.tags.includes(tag)).length }))
+  .sort((a, b) => a.tag.localeCompare(b.tag));
+---
+
+<BaseLayout title="Index" description="Browse writing by subject.">
+  <header class="page-header">
+    <p class="eyebrow">Find a signal</p>
+    <h1>Index</h1>
+    <p>Browse the archive by subject.</p>
+  </header>
+  <ul class="tag-index">
+    {tags.map(({ tag, count }) => (
+      <li>
+        <a href={`/tags/${tag.toLowerCase()}/`}>
+          <span>{tag}</span><small>{String(count).padStart(2, '0')} notes</small><b>↗</b>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

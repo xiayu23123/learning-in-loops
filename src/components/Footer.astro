@@ -1,0 +1,11 @@
+---
+import { SITE } from '../config';
+---
+
+<footer class="site-footer">
+  <p>© {new Date().getFullYear()} {SITE.author}. Written from somewhere between here and there.</p>
+  <div>
+    <a href="/rss.xml">RSS</a>
+    <a href={`mailto:${SITE.email}`}>Email</a>
+  </div>
+</footer>

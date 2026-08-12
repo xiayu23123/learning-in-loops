@@ -1,0 +1,40 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const date = post.data.published.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} type="article">
+  <article class="article-layout">
+    <aside class="article-rail" aria-label="Article details">
+      <span class="rail-dot"></span>
+      <span>{date}</span>
+      <span>{post.data.tags.join(' · ')}</span>
+    </aside>
+    <div class="article-main">
+      <header class="article-header">
+        <a class="back-link" href="/posts/">← All writing</a>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+      <footer class="article-end">
+        <span>End of note</span>
+        <a href="/posts/">Continue reading →</a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

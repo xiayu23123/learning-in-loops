@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  order?: number;
+}
+
+const { post, order } = Astro.props;
+const date = post.data.published.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: '2-digit',
+});
+---
+
+<article class="post-card">
+  <div class="post-meta">
+    {order && <span class="post-order">{String(order).padStart(2, '0')}</span>}
+    <time datetime={post.data.published.toISOString()}>{date}</time>
+  </div>
+  <div>
+    <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+    <p>{post.data.description}</p>
+    <ul class="tag-list" aria-label="Tags">
+      {post.data.tags.map((tag) => <li><a href={`/tags/${tag.toLowerCase()}/`}>{tag}</a></li>)}
+    </ul>
+  </div>
+  <a class="arrow-link" href={`/posts/${post.id}/`} aria-label={`Read ${post.data.title}`}>↗</a>
+</article>

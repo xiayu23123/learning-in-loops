@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#e8f1f2"/>
+  <path d="M96 92v446M96 210c146 66 204-78 350-12s204-78 350-12 204-78 308-28" fill="none" stroke="#b9cdd1" stroke-width="2"/>
+  <circle cx="96" cy="210" r="11" fill="#ee6c4d"/>
+  <text x="165" y="286" fill="#102a43" font-family="Georgia,serif" font-size="92">Far Shore Notes</text>
+  <text x="170" y="356" fill="#466476" font-family="Arial,sans-serif" font-size="28" letter-spacing="3">IDEAS · WORK · PLACES</text>
+  <text x="1000" y="530" fill="#ee6c4d" font-family="monospace" font-size="34">FSN ◒</text>
+</svg>

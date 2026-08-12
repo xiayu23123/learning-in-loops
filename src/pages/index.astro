@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE } from '../config';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="route-line" aria-hidden="true">
+      <span>23.13° N</span>
+      <span class="route-track"><i></i></span>
+      <span>open water</span>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Independent notes · Est. 2026</p>
+      <h1>Ideas travel farther<br />when they have <em>a place to land.</em></h1>
+      <p class="hero-intro">{SITE.intro}</p>
+      <a class="primary-link" href="/posts/">Read the latest notes <span>→</span></a>
+    </div>
+    <div class="hero-stamp" aria-hidden="true">
+      <span>FSN</span>
+      <small>Signals from<br />the far shore</small>
+    </div>
+  </section>
+
+  <section class="latest-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Recent transmissions</p>
+        <h2>Latest writing</h2>
+      </div>
+      <a href="/posts/">View all {posts.length} notes</a>
+    </div>
+    <div class="post-list">
+      {posts.slice(0, 4).map((post, index) => <PostCard post={post} order={index + 1} />)}
+    </div>
+  </section>
+
+  <section class="dispatch">
+    <p class="eyebrow">Stay in range</p>
+    <h2>No feed, no noise.<br />Just new notes when they’re ready.</h2>
+    <div class="dispatch-links">
+      <a href="/rss.xml">Follow via RSS <span>↗</span></a>
+      <a href={`mailto:${SITE.email}`}>Send a note <span>↗</span></a>
+    </div>
+  </section>
+</BaseLayout>

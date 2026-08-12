@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout title="About" description={`About ${SITE.author} and ${SITE.title}.`}>
+  <section class="about-layout">
+    <div class="about-marker" aria-hidden="true"><span>ABOUT</span><i></i></div>
+    <div class="about-copy">
+      <p class="eyebrow">A little context</p>
+      <h1>Hello, I’m<br />{SITE.author}.</h1>
+      <div class="prose intro-prose">
+        <p>I’m a builder and lifelong learner interested in technology, creative work, and the ways people make a home in unfamiliar places.</p>
+        <p>This site is my public notebook. I use it to turn unfinished observations into ideas I can return to—and, hopefully, ideas that are useful to someone else.</p>
+        <h2>What I’m working on</h2>
+        <p>Replace this paragraph with your current projects, interests, or a short personal introduction. Everything on this page is plain text, so it is easy to make your own.</p>
+        <h2>Say hello</h2>
+        <p>The best way to reach me is <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

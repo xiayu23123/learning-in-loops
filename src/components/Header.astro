@@ -1,0 +1,42 @@
+---
+import { SITE } from '../config';
+
+const pathname = Astro.url.pathname;
+const links = [
+  { href: '/posts/', label: 'Writing' },
+  { href: '/tags/', label: 'Index' },
+  { href: '/about/', label: 'About' },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${SITE.title}, home`}>
+    <span class="brand-mark" aria-hidden="true">◒</span>
+    <span>{SITE.title}</span>
+  </a>
+  <nav aria-label="Main navigation">
+    {links.map((link) => (
+      <a href={link.href} aria-current={pathname.startsWith(link.href) ? 'page' : undefined}>
+        {link.label}
+      </a>
+    ))}
+    <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+      <span class="theme-icon" aria-hidden="true">☼</span>
+    </button>
+  </nav>
+</header>
+
+<script is:inline>
+  const button = document.querySelector('.theme-toggle');
+  const icon = document.querySelector('.theme-icon');
+  const updateIcon = () => {
+    if (icon) icon.textContent = document.documentElement.dataset.theme === 'dark' ? '☾' : '☼';
+  };
+  updateIcon();
+  button?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    updateIcon();
+  });
+</script>
