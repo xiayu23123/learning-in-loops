@@ -15,7 +15,14 @@ const date = post.data.published.toLocaleDateString('en-US', {
 });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} type="article">
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  published={post.data.published}
+  updated={post.data.updated}
+  tags={post.data.tags}
+>
   <article class="article-layout">
     <aside class="article-rail" aria-label="Article details">
       <span class="rail-dot"></span>

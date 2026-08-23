@@ -9,6 +9,9 @@ interface Props {
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  published?: Date;
+  updated?: Date;
+  tags?: string[];
 }
 
 const {
@@ -16,10 +19,35 @@ const {
   description = SITE.description,
   image = '/social-card.svg',
   type = 'website',
+  published,
+  updated,
+  tags = [],
 } = Astro.props;
 const pageTitle = title ? `${title} — ${SITE.title}` : SITE.title;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImage = new URL(image, Astro.site);
+const jsonLd = type === 'article'
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description,
+      image: socialImage.href,
+      datePublished: published?.toISOString(),
+      dateModified: (updated || published)?.toISOString(),
+      author: { '@type': 'Person', name: SITE.author },
+      publisher: { '@type': 'Person', name: SITE.author },
+      keywords: tags.join(', '),
+      mainEntityOfPage: canonicalURL.href,
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE.title,
+      description: SITE.description,
+      url: canonicalURL.href,
+      author: { '@type': 'Person', name: SITE.author },
+    };
 ---
 
 <!doctype html>
@@ -29,10 +57,14 @@ const socialImage = new URL(image, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#e8f1f2" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -41,6 +73,7 @@ const socialImage = new URL(image, Astro.site);
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{pageTitle}</title>
     <script is:inline>
