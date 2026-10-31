@@ -6,7 +6,7 @@ export async function GET({ site }: { site: URL }) {
   const tags = [...new Set(posts.flatMap((post) => post.data.tags.map(tagSlug)))];
   const base = site || new URL('https://learning-in-loops.pages.dev');
 
-  const entries = [
+  const entries: { path: string; priority: string; lastmod?: string }[] = [
     { path: '/', priority: '1.0' },
     { path: '/posts/', priority: '0.9' },
     { path: '/tags/', priority: '0.6' },

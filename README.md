@@ -1,40 +1,72 @@
-# Far Shore Notes
+# Learning in Loops
 
-A static personal blog built with Astro, ready for Cloudflare Pages.
+Source for [learning-in-loops.pages.dev](https://learning-in-loops.pages.dev), my
+personal blog: small world models (mostly negative results), essays, and
+speculative fiction.
 
-## Start locally
+It is a static [Astro](https://astro.build) site. Posts are Markdown files in
+`src/content/posts/`.
+
+## Run it locally
+
+Requires Node.js 22.12 or newer and pnpm 10 (`corepack enable` picks up the
+version pinned in `package.json`).
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-## Personalize
+Other scripts:
 
-1. Edit site name, author, intro, email, and GitHub URL in `src/config.ts`.
-2. Replace the sample Markdown files in `src/content/posts/`.
-3. Edit the introduction in `src/pages/about.astro`.
-4. Set `PUBLIC_SITE_URL` to your final domain during deployment.
+- `pnpm build` builds the site into `dist/`
+- `pnpm check` runs `astro check` (types and templates)
+- `pnpm check:links` checks that every internal link in `dist/` resolves (run after a build)
+- `pnpm preview` serves the built site
 
 ## Write a post
 
-Create a Markdown file in `src/content/posts/`:
+Create a Markdown file in `src/content/posts/`. The file name becomes the URL
+(`/posts/<file-name>/`).
 
 ```md
 ---
 title: My new post
-description: A concise summary for search engines and article lists.
-published: 2026-08-09
-tags: [Notes]
-draft: false
+description: One or two sentences for the archive, search results and link previews.
+published: 2026-11-01
+updated: 2026-11-03     # optional
+tags: [World Models]
+featured: false         # optional, see below
+draft: false            # true hides the post everywhere
 ---
 
 Start writing here.
 ```
 
-## Cloudflare Pages
+Tags in use: World Models, Agents, Economics, Policy, Science Fiction, Quiet
+Zone. Reusing them keeps the tag pages useful; a new tag gets its own page
+automatically.
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- Environment variable: `PUBLIC_SITE_URL=https://yourdomain.com`
-- Node.js version: 22
+The home page shows featured World Models posts under "Research", featured
+Science Fiction posts under "Fiction", and the four newest of everything else
+under "Latest essays".
+
+## Add a project
+
+Add one entry to `src/data/projects.ts`. Set `post` to the write-up's file
+name to link it; leave `href` and `post` out to show it as "In progress".
+
+## Deploy (Cloudflare Pages)
+
+The Cloudflare Pages GitHub integration builds every push. `main` is
+production; every other branch gets a preview URL (kept out of search engines
+by `public/_headers`).
+
+- Framework preset: Astro
+- Build command: `pnpm build`
+- Build output directory: `dist`
+- Node.js version: 22 (from `.node-version`)
+- Optional environment variable: `PUBLIC_SITE_URL` (defaults to `https://learning-in-loops.pages.dev`)
+
+CI (`.github/workflows/ci.yml`) runs `astro check`, the build, the link
+checker and Lighthouse on every push and pull request.
