@@ -44,8 +44,8 @@ draft: false            # true hides the post everywhere
 Start writing here.
 ```
 
-Tags in use: World Models, Agents, Economics, Policy, Science Fiction, Quiet
-Zone. Reusing them keeps the tag pages useful; a new tag gets its own page
+Tags in use: World Models, Agents, RAG, Evaluation, Economics, Policy,
+Science Fiction, Quiet Zone. Reusing them keeps the tag pages useful; a new tag gets its own page
 automatically.
 
 The home page shows featured World Models posts under "Research", featured
