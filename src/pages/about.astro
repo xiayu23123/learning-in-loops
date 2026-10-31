@@ -1,21 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../config';
+
+const regimes = [
+  ['observation = state', 'plain MLP in observation space'],
+  ['observation < state', 'delay embedding (Takens), not a learned latent'],
+  ['high-D pixels', 'reconstruction-trained encoder, for rollout stability only'],
+  ['stochastic dynamics', 'heteroscedastic output head (not a latent, not an ensemble)'],
+  ['planning', 'dynamics that transfer across task instances'],
+  ['long-term memory', 'recurrence + a dense predictive objective'],
+];
 ---
 
-<BaseLayout title="About" description={`About ${SITE.author} and ${SITE.title}.`}>
+<BaseLayout title="About" description={`About ${SITE.author} and ${SITE.title}: small world models, negative results, essays and fiction.`}>
   <section class="about-layout">
     <div class="about-marker" aria-hidden="true"><span>ABOUT</span><i></i></div>
     <div class="about-copy">
       <p class="eyebrow">A little context</p>
       <h1>Hello, I’m<br />{SITE.author}.</h1>
       <div class="prose intro-prose">
-        <p>I’m a builder and lifelong learner interested in technology, creative work, and the ways people make a home in unfamiliar places.</p>
-        <p>This site is my public notebook. I use it to turn unfinished observations into ideas I can return to—and, hopefully, ideas that are useful to someone else.</p>
-        <h2>What I’m working on</h2>
-        <p>Replace this paragraph with your current projects, interests, or a short personal introduction. Everything on this page is plain text, so it is easy to make your own.</p>
+        <p>I build small world models and write down the parts that fail. This site is my diary on the internet: research notes, essays I needed to write to think something through, and some fiction.</p>
+
+        <h2>The arc so far</h2>
+        <p>I started by encoding the I Ching as a differentiable state-space model: 64 hexagrams as vertices of a signed 6-cube, the King Wen permutation and the 错/综/互 relations hard-coded, only the continuous parts learning. It solved no real problem. On the one test designed to be falsifiable, change-point detection against a tuned PELT baseline, it lost by 2×.</p>
+        <p>One methodological result survived: a representation trained to serve a <em>controller</em> is not good enough to <em>plan</em> with. Learn it from the dynamics directly, with an anti-collapse regulariser, and action-sensitivity goes up about 16×. It held across 5 seeds and an ablation. The whole story, dead ends included, is in <a href="/posts/i-ching-world-model/">Every Dead End Named the Next Step</a>.</p>
+        <p>But every environment there was one I had written myself, a tautology engine where the model learns to invert a generator I control. So I pointed the same pipeline at dynamics nobody designed and asked whether the latent transition earns its place at all. Six regimes later:</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th scope="col">Regime</th><th scope="col">What actually carries the load</th></tr>
+            </thead>
+            <tbody>
+              {regimes.map(([regime, load]) => <tr><td>{regime}</td><td>{load}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p>The learned latent transition is the active ingredient in zero of the six. That one is written up in <a href="/posts/when-does-a-latent-world-model-help/">When Does a Latent World Model Actually Help?</a></p>
+        <p>Negative results, reproduced and ablated. I write them down because they are the part that saves the next person the weeks.</p>
+
+        <h2>The rest of the site</h2>
+        <p>Not everything here is research. The <a href="/posts/">essays</a> are where I think out loud about AI agents, who ends up owning them, and what happens to work and money when they get good. <a href="/posts/quiet-zone/">Quiet Zone</a> is a novella about free digital doubles and a city that runs on rented electricity.</p>
+        <p>The code behind the research, and a few other things I have built, is on the <a href="/projects/">Projects</a> page.</p>
+
         <h2>Say hello</h2>
-        <p>The best way to reach me is <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+        <p>Email me at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, or find me on <a href={SITE.github}>GitHub</a>. New posts arrive by <a href="/rss.xml">RSS</a>.</p>
       </div>
     </div>
   </section>
