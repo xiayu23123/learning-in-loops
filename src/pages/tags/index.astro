@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tagSlug } from '../../lib/tags';
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
@@ -17,7 +18,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
   <ul class="tag-index">
     {tags.map(({ tag, count }) => (
       <li>
-        <a href={`/tags/${tag.toLowerCase()}/`}>
+        <a href={`/tags/${tagSlug(tag)}/`}>
           <span>{tag}</span><small>{String(count).padStart(2, '0')} notes</small><b>↗</b>
         </a>
       </li>

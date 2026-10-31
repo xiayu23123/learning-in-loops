@@ -4,8 +4,9 @@ import { SITE } from '../config';
 const pathname = Astro.url.pathname;
 const links = [
   { href: '/posts/', label: 'Writing' },
-  { href: '/fiction/', label: 'Science Fiction' },
-  { href: '/tags/', label: 'Index' },
+  { href: '/fiction/', label: 'Fiction' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/tags/', label: 'Tags' },
   { href: '/about/', label: 'About' },
 ];
 ---
@@ -21,10 +22,10 @@ const links = [
         {link.label}
       </a>
     ))}
-    <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-      <span class="theme-icon" aria-hidden="true">☼</span>
-    </button>
   </nav>
+  <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+    <span class="theme-icon" aria-hidden="true">☼</span>
+  </button>
 </header>
 
 <script is:inline>
@@ -37,7 +38,7 @@ const links = [
   button?.addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
+    try { localStorage.setItem('theme', next); } catch {}
     updateIcon();
   });
 </script>
