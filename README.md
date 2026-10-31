@@ -23,6 +23,7 @@ Other scripts:
 - `pnpm check` runs `astro check` (types and templates)
 - `pnpm check:links` checks that every internal link in `dist/` resolves (run after a build)
 - `pnpm preview` serves the built site
+- `node scripts/build-social-card.mjs` re-renders `public/social-card.png` (the link-preview image) after you edit `public/social-card.svg`
 
 ## Write a post
 

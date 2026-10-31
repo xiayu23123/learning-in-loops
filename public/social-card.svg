@@ -2,7 +2,8 @@
   <rect width="1200" height="630" fill="#e8f1f2"/>
   <path d="M96 92v446M96 210c146 66 204-78 350-12s204-78 350-12 204-78 308-28" fill="none" stroke="#b9cdd1" stroke-width="2"/>
   <circle cx="96" cy="210" r="11" fill="#ee6c4d"/>
-  <text x="165" y="286" fill="#102a43" font-family="Georgia,serif" font-size="78">Learning in Loops</text>
-  <text x="170" y="356" fill="#466476" font-family="Arial,sans-serif" font-size="26" letter-spacing="3">ESSAYS · AI · SPECULATIVE FICTION</text>
-  <text x="940" y="530" fill="#ee6c4d" font-family="monospace" font-size="30">BY XIXI ◒</text>
+  <text x="165" y="318" fill="#102a43" font-family="Charter, 'Bitstream Charter', Georgia, serif" font-size="84" letter-spacing="-2">Learning in Loops</text>
+  <text x="168" y="390" fill="#466476" font-family="Charter, 'Bitstream Charter', Georgia, serif" font-size="40">Small world models, mostly <tspan fill="#b8432a" font-style="italic">negative results.</tspan></text>
+  <text x="170" y="452" fill="#466476" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, monospace" font-size="22" letter-spacing="3">ESSAYS · SPECULATIVE FICTION</text>
+  <text x="1104" y="530" text-anchor="end" fill="#b8432a" font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, monospace" font-size="28">BY XIXI ◒</text>
 </svg>
