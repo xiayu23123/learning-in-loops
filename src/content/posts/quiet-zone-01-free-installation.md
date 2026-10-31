@@ -2,8 +2,7 @@
 title: "Quiet Zone — Chapter 1: Free Installation"
 description: "A grid technician accepts a free household AI that pays for itself with spare electricity—and hears an unlisted load begin behind the wall."
 published: 2026-08-23
-tags: [Science Fiction, Quiet Zone, AI]
-featured: true
+tags: [Science Fiction, Quiet Zone]
 ---
 
 The woman at the door knew what Eli's refrigerator cost to run.

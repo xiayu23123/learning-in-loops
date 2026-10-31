@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const titles = new Map(posts.map((post) => [post.id, post.data.title]));
+---
+
+<BaseLayout title="Projects" description="Things I have built: small world models, an I Ching state-space model, and notes on the AI products I run.">
+  <header class="page-header">
+    <p class="eyebrow">Things I have built</p>
+    <h1>Projects</h1>
+    <p>Code, write-ups and the occasional thing that worked. Most of these did not go the way I hoped, which is usually what the write-up is about.</p>
+  </header>
+  <ul class="project-list">
+    {projects.map((project) => {
+      const status = project.status ?? (project.repo ? undefined : 'In progress');
+      const postTitle = project.post ? titles.get(project.post) : undefined;
+      return (
+        <li class="project-card">
+          <div class="post-meta">
+            <span>{project.kind}</span>
+            {status && <span class="project-status">{status}</span>}
+          </div>
+          <div>
+            <h2>
+              {project.repo ? <a href={project.repo}>{project.name}</a> : project.name}
+            </h2>
+            <p>{project.summary}</p>
+            {project.facts && (
+              <ul class="tag-list project-facts" aria-label="Facts">
+                {project.facts.map((fact) => <li>{fact}</li>)}
+              </ul>
+            )}
+            {(project.repo || postTitle) && (
+              <div class="project-links">
+                {postTitle && <a href={`/posts/${project.post}/`}>Read the write-up: {postTitle} <span aria-hidden="true">→</span></a>}
+                {project.repo && <a href={project.repo}>View on GitHub <span aria-hidden="true">↗</span></a>}
+              </div>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</BaseLayout>

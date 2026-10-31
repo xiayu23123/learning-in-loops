@@ -1,19 +1,24 @@
 {
-  "name": "far-shore-notes",
+  "name": "learning-in-loops",
   "type": "module",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
+    "check:links": "node scripts/check-links.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "latest",
-    "@astrojs/rss": "latest",
-    "astro": "latest",
-    "typescript": "latest"
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^7.2.0",
+    "typescript": "^6.0.3"
   }
 }

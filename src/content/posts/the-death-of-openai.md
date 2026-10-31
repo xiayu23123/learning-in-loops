@@ -2,7 +2,7 @@
 title: "The Death of OpenAI"
 description: "OpenAI could help build an immense AI market and still lose the profits, pricing power, and independence needed to shape its future."
 published: 2026-10-15
-tags: [AI, OpenAI, Business, Policy]
+tags: [Economics, Policy]
 draft: false
 featured: true
 ---

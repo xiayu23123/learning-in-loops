@@ -2,7 +2,8 @@
 title: "When Does a Latent World Model Actually Help? Six Regimes"
 description: A world model is usually drawn as observation → encoder → latent → transition. I tested whether the latent earns its place across six regimes of dynamics I did not hand-author. It almost never does — and each regime says what carries the load instead.
 published: 2026-08-30
-tags: [AI, Research, Technology]
+tags: [World Models]
+featured: true
 ---
 
 The [I Ching world model](/posts/i-ching-world-model/) ended with one

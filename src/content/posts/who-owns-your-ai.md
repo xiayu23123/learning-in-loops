@@ -2,7 +2,7 @@
 title: "Who Owns Your AI?"
 description: "The decisive AI ownership battle will not be over a chatbot's output. It will be over the memory, identity, authority, and compute that make an AI personal."
 published: 2026-08-23
-tags: [AI, Ownership, Technology, Policy]
+tags: [Agents, Policy]
 featured: true
 ---
 

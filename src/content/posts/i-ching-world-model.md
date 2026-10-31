@@ -2,7 +2,8 @@
 title: "Every Dead End Named the Next Step: An I Ching World Model"
 description: A research prototype that encodes the I Ching as a differentiable system. It never solved a real problem, but each failure named the next step, and one methodological result survived.
 published: 2026-08-29
-tags: [AI, Research, Technology]
+tags: [World Models]
+featured: true
 ---
 
 I spent a few weeks building `yi-world-model` — a differentiable state-space

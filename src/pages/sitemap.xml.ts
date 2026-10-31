@@ -1,13 +1,16 @@
 import { getCollection } from 'astro:content';
+import { tagSlug } from '../lib/tags';
 
 export async function GET({ site }: { site: URL }) {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  const tags = [...new Set(posts.flatMap((post) => post.data.tags.map((tag) => tag.toLowerCase())))];
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags.map(tagSlug)))];
   const base = site || new URL('https://learning-in-loops.pages.dev');
 
-  const entries = [
+  const entries: { path: string; priority: string; lastmod?: string }[] = [
     { path: '/', priority: '1.0' },
     { path: '/posts/', priority: '0.9' },
+    { path: '/fiction/', priority: '0.7' },
+    { path: '/projects/', priority: '0.7' },
     { path: '/tags/', priority: '0.6' },
     { path: '/about/', priority: '0.5' },
     ...posts.map((post) => ({

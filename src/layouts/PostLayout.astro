@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import { tagSlug } from '../lib/tags';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -26,8 +27,12 @@ const date = post.data.published.toLocaleDateString('en-US', {
   <article class="article-layout">
     <aside class="article-rail" aria-label="Article details">
       <span class="rail-dot"></span>
-      <span>{date}</span>
-      <span>{post.data.tags.join(' · ')}</span>
+      <time datetime={post.data.published.toISOString()}>{date}</time>
+      {post.data.tags.length > 0 && (
+        <ul class="rail-tags" aria-label="Tags">
+          {post.data.tags.map((tag) => <li><a href={`/tags/${tagSlug(tag)}/`}>{tag}</a></li>)}
+        </ul>
+      )}
     </aside>
     <div class="article-main">
       <header class="article-header">

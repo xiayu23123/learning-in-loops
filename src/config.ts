@@ -1,7 +1,8 @@
 export const SITE = {
   title: 'Learning in Loops',
   author: 'xixi',
-  description: 'An ordinary person learning in the age of AI.',
-  intro: 'I’m an ordinary person learning in the age of AI—revisiting ideas, building small things, and sharing what becomes clearer the second time around.',
+  description: 'Small world models, mostly negative results. Essays and speculative fiction.',
+  intro: 'I build small world models and write down the parts that fail. In between I write essays about AI agents, economics and policy, and some speculative fiction.',
   email: 'learninginloops@outlook.com',
+  github: 'https://github.com/xiayu23123',
 };

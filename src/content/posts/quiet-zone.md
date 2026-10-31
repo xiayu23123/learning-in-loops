@@ -2,7 +2,7 @@
 title: Quiet Zone
 description: An English science-fiction novella about free digital doubles, a civilization built on rented electricity, and the uncertain lives that survive its erasure.
 published: 2026-10-14
-tags: [Science Fiction, Quiet Zone, AI]
+tags: [Science Fiction, Quiet Zone]
 draft: false
 featured: true
 ---
@@ -13,7 +13,7 @@ Eli Mercer accepts a free digital double because it makes financial sense. It ea
 
 This complete edition includes revised versions of the previously published [first chapter](/posts/quiet-zone-01-free-installation/) and [second chapter](/posts/quiet-zone-02-spare-capacity/).
 
-### Contents
+## Contents
 
 - [Chapter 1: Free Installation](#chapter-1-free-installation)
 - [Chapter 2: Spare Capacity](#chapter-2-spare-capacity)
