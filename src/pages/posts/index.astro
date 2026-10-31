@@ -5,15 +5,30 @@ import PostCard from '../../components/PostCard.astro';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
+
+const years = new Map<number, typeof posts>();
+for (const post of posts) {
+  const year = post.data.published.getUTCFullYear();
+  years.set(year, [...(years.get(year) ?? []), post]);
+}
 ---
 
-<BaseLayout title="Writing" description="All notes, essays, and field reports.">
+<BaseLayout title="Writing" description="Every post: world-model research notes, essays and speculative fiction, newest first.">
   <header class="page-header">
     <p class="eyebrow">The complete log</p>
     <h1>Writing</h1>
-    <p>Essays, field notes, and useful things found along the way.</p>
+    <p>Research notes, essays and fiction, newest first.</p>
   </header>
-  <div class="post-list page-list">
-    {posts.map((post, index) => <PostCard post={post} order={index + 1} />)}
+  <div class="page-list">
+    {[...years].map(([year, yearPosts]) => (
+      <section class="year-group" aria-labelledby={`year-${year}`}>
+        <h2 class="year-heading" id={`year-${year}`}>
+          {year} <small>{yearPosts.length} {yearPosts.length === 1 ? 'post' : 'posts'}</small>
+        </h2>
+        <div class="post-list">
+          {yearPosts.map((post) => <PostCard post={post} headingLevel={3} />)}
+        </div>
+      </section>
+    ))}
   </div>
 </BaseLayout>
