@@ -9,6 +9,8 @@ export async function GET({ site }: { site: URL }) {
   const entries: { path: string; priority: string; lastmod?: string }[] = [
     { path: '/', priority: '1.0' },
     { path: '/posts/', priority: '0.9' },
+    { path: '/fiction/', priority: '0.7' },
+    { path: '/projects/', priority: '0.7' },
     { path: '/tags/', priority: '0.6' },
     { path: '/about/', priority: '0.5' },
     ...posts.map((post) => ({

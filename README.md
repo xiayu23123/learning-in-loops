@@ -53,8 +53,9 @@ under "Latest essays".
 
 ## Add a project
 
-Add one entry to `src/data/projects.ts`. Set `post` to the write-up's file
-name to link it; leave `href` and `post` out to show it as "In progress".
+Add one entry to `src/data/projects.ts`. `repo` links the code, `post` (a
+post's file name) links the write-up; an entry without `repo` is shown as
+"In progress".
 
 ## Deploy (Cloudflare Pages)
 

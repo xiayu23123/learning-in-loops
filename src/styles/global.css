@@ -170,6 +170,18 @@ button { font: inherit; }
 .prose img { max-width: 100%; height: auto; }
 .article-end { display: flex; justify-content: space-between; margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-soft); font: .65rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 
+.project-list { margin: 0 0 8rem; padding: 0; list-style: none; }
+.project-card { display: grid; grid-template-columns: 150px minmax(0, 1fr); align-items: start; gap: 2rem; padding: 2.6rem 0; border-bottom: 1px solid var(--line); }
+.project-card h2 { margin: -.3rem 0 .7rem; font: 500 clamp(1.3rem, 2.3vw, 1.8rem)/1.2 var(--mono); letter-spacing: -.03em; overflow-wrap: anywhere; }
+.project-card h2 a { text-decoration: none; }
+.project-card h2 a:hover { text-decoration: underline; }
+.project-card p { max-width: 680px; margin: 0; color: var(--ink-soft); }
+.project-status { color: var(--signal-text); }
+.project-facts li { padding: .18rem .55rem; border: 1px solid var(--line); border-radius: 1rem; color: var(--ink-soft); font: .6rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.project-links { display: flex; flex-wrap: wrap; gap: .8rem 2rem; margin-top: 1.4rem; font-size: .88rem; }
+.project-links a { padding: .2rem 0; font-weight: 700; text-decoration-color: var(--line); }
+.project-links span { color: var(--signal-text); }
+
 .tag-index { margin: 0 0 8rem; padding: 0; list-style: none; }
 .tag-index li { border-bottom: 1px solid var(--line); }
 .tag-index a { display: grid; grid-template-columns: 1fr 120px 30px; gap: 2rem; align-items: center; padding: 2rem 0; text-decoration: none; }
@@ -203,6 +215,7 @@ button { font: inherit; }
   .home-section + .dispatch { margin-top: 5rem; }
   .section-heading { flex-direction: column; align-items: flex-start; gap: .75rem; margin-bottom: 2rem; }
   .post-card { grid-template-columns: 1fr 30px; gap: 1rem; }
+  .project-card { grid-template-columns: 1fr; gap: .8rem; }
   .post-meta { grid-column: 1 / -1; }
   .post-card:hover { padding-left: 0; }
   .dispatch { padding: 2.5rem 1.5rem; grid-template-columns: 1fr; }
