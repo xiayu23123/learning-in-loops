@@ -16,6 +16,8 @@ interface Props {
   published?: Date;
   updated?: Date;
   tags?: string[];
+  /** Keep the page out of search results (and skip the canonical link). */
+  noindex?: boolean;
 }
 
 const DEFAULT_IMAGE = {
@@ -33,6 +35,7 @@ const {
   published,
   updated,
   tags = [],
+  noindex = false,
 } = Astro.props;
 const isDefaultImage = image === DEFAULT_IMAGE.src;
 const imageWidth = Astro.props.imageWidth ?? (isDefaultImage ? DEFAULT_IMAGE.width : undefined);
@@ -83,10 +86,10 @@ const jsonLd = type === 'article'
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="author" content={SITE.author} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content="#e8f1f2" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0d2532" media="(prefers-color-scheme: dark)" />
-    <link rel="canonical" href={canonicalURL} />
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.title} />
