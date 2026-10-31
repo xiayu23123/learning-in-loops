@@ -46,7 +46,9 @@ export const projects: Project[] = [
     name: 'citation-gate',
     kind: 'Tool',
     summary:
-      'Pulling the citation gate out of my classical-texts app into something standalone: code checks the facts and the sources, the model only writes the sentences, and a claim without a source does not get said.',
-    status: 'In progress',
+      'The citation gate from my classical-texts app, rebuilt as a standalone CLI, library and GitHub Action. Every passage an answer quotes has to be in your corpus, in the book it is credited to, and a near match fails if any edit touches a character or a name that carries meaning (寒→热, a dropped 不, 麻黄汤→桂枝汤).',
+    repo: 'https://github.com/xiayu23123/citation-gate',
+    post: 'diff-dont-score-citation-gate',
+    facts: ['ablation per mechanism', 'limits written down'],
   },
 ];
