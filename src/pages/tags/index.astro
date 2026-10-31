@@ -9,10 +9,10 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))]
   .sort((a, b) => a.tag.localeCompare(b.tag));
 ---
 
-<BaseLayout title="Index" description="Browse writing by subject.">
+<BaseLayout title="Tags" description="Browse writing by subject.">
   <header class="page-header">
     <p class="eyebrow">Find a signal</p>
-    <h1>Index</h1>
+    <h1>Tags</h1>
     <p>Browse the archive by subject.</p>
   </header>
   <ul class="tag-index">

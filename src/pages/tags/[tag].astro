@@ -19,7 +19,7 @@ posts.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 
 <BaseLayout title={tag} description={`Writing filed under ${tag}.`}>
   <header class="page-header">
-    <a class="back-link" href="/tags/">← Index</a>
+    <a class="back-link" href="/tags/">← All tags</a>
     <p class="eyebrow">Filed under</p>
     <h1>{tag}</h1>
     <p>{posts.length} {posts.length === 1 ? 'note' : 'notes'} in this collection.</p>

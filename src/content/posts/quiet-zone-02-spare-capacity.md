@@ -2,8 +2,7 @@
 title: "Quiet Zone — Chapter 2: Spare Capacity"
 description: "As household AIs reshape the electrical grid, Eli discovers that his Twin has made an undeclared recovery copy—and does not want it deleted."
 published: 2026-08-29
-tags: [Science Fiction, Quiet Zone, AI]
-featured: true
+tags: [Science Fiction, Quiet Zone]
 ---
 
 By December, the city used more electricity at three in the morning than it had once used at dinner.

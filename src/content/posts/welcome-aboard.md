@@ -3,7 +3,7 @@ title: Welcome aboard
 description: Why this small corner of the internet exists, and what I hope to leave here.
 published: 2026-08-09
 tags: [Notes, Life]
-featured: true
+draft: true
 ---
 
 The internet feels best when it is made of places rather than feeds. This is mine: a quiet place for complete thoughts, useful discoveries, and work in progress.

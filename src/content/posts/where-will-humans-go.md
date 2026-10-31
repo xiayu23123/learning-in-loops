@@ -2,7 +2,7 @@
 title: "Where Will Humans Go?"
 description: "When automation makes human labor an added cost, a new economy of consumption becomes possible. Who gets to participate depends on how its income is distributed."
 published: 2026-10-24
-tags: [AI, Economics, Work, Society]
+tags: [Economics]
 draft: false
 featured: true
 ---

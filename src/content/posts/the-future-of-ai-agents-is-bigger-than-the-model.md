@@ -2,7 +2,7 @@
 title: The Future of AI Agents Is Bigger Than the Model
 description: AI agents are evolving from answer engines into systems that remember, authenticate, transact, delegate, and act. The winners will control the delegation stack, not just the model.
 published: 2026-08-13
-tags: [AI, Agents, Technology]
+tags: [Agents]
 featured: true
 ---
 

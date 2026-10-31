@@ -3,6 +3,7 @@ title: A small web is still a wide world
 description: Personal websites are not a retreat from the internet; they are a better way into it.
 published: 2026-07-24
 tags: [Web, Notes]
+draft: true
 ---
 
 Publishing on your own site can seem old-fashioned. There is no algorithm promising an audience, no ready-made stream, and no number telling you whether the day was successful.
